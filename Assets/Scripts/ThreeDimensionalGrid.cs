@@ -10,7 +10,11 @@ public class ThreeDimensionalGrid : MonoBehaviour
     
     private Cell[,,] _grid;
     private int _width, _height, _depth;
-
+    private int _mineCount;
+    
+    private List<Cell> _minePositions = new List<Cell>();
+    private int _flagCount;
+    
     public void CreateGrid(int width, int height, int depth)
     {
         _width = width;
@@ -59,6 +63,8 @@ public class ThreeDimensionalGrid : MonoBehaviour
             throw new Exception("Too high number for mine count");
         }
 
+        _mineCount = mineCount;
+        
         while (mineCount > 0)
         {
             Vector3Int randomCellPosition = 
@@ -68,10 +74,30 @@ public class ThreeDimensionalGrid : MonoBehaviour
             if (!selectedCell.IsMine)
             {
                 selectedCell.IsMine = true;
+                _minePositions.Add(selectedCell);
                 RaiseNeighbourCells(DirectionCalculator.GetNeighbourDirections(), randomCellPosition.x, randomCellPosition.y, randomCellPosition.z);
                 mineCount--;
             }
         }
+    }
+
+    public void ChangeFlagCount(int amount)
+    {
+        _flagCount += amount;
+
+        if (_mineCount == _flagCount)
+        {
+            foreach (var minePosition in _minePositions)
+            {
+                if (!minePosition.IsFlagged)
+                {
+                    return;
+                }
+                
+                Debug.Log("Win!");
+            }
+        }
+        
     }
     
     private void RaiseNeighbourCells(List<Vector3Int> directions, int x, int y, int z)

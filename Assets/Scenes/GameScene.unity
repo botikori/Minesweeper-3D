@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1228314018}
-  mineCount: 10
+  mineCount: 1
   width: 10
   height: 10
   depth: 10
@@ -1220,7 +1220,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.2040517e-37, y: -2, z: 0, w: -5.533085e-10}
+  m_BoundingSphereOverride: {x: 4.5584e-41, y: 190.05652, z: 4.5584e-41, w: 326.22144}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

@@ -43,11 +43,13 @@ public class Cell : MonoBehaviour
 
         if (IsFlagged)
         {
+            _grid.ChangeFlagCount(1);
             cellSprite.gameObject.SetActive(true);
             cellSprite.sprite = sprites[1];
         }
         else
         {
+            _grid.ChangeFlagCount(-1);
             cellSprite.gameObject.SetActive(false);
         }
     }
