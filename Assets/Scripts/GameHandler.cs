@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class GameHandler : MonoBehaviour
 
     public void GameOver()
     {
-        
+        SetCursorVisibility(true);
+        SceneManager.LoadScene("Scenes/Menus/GameOverMenuScene");
     }
 }

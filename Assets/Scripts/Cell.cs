@@ -21,7 +21,7 @@ public class Cell : MonoBehaviour
     {
         _camera = Camera.main;
         _grid = GetComponentInParent<ThreeDimensionalGrid>();
-        _gameHandler = GetComponent<GameHandler>();
+        _gameHandler = FindObjectOfType<GameHandler>();
     }
 
     private void Update()
@@ -74,8 +74,9 @@ public class Cell : MonoBehaviour
         
         if (IsMine)
         {
-            //TODO GameOver
-            Debug.Log("Game over! :(");
+            //Game over :(
+            _gameHandler.GameOver();
+
             cellText.gameObject.SetActive(false);
             cellSprite.gameObject.SetActive(true);
             cellSprite.sprite = sprites[0];
