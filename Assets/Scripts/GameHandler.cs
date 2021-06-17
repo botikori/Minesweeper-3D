@@ -4,17 +4,15 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour
 {
     [SerializeField] private ThreeDimensionalGrid grid;
-    [SerializeField] private int mineCount;
-    [SerializeField] private int width, height, depth;
-    
+
     void Start()
     {
         //SetCursorVisibility(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        grid.CreateGrid(width, height, depth);
+        grid.CreateGrid(Settings.Width, Settings.Height, Settings.Depth);
         
-        grid.CreateMap(mineCount);
+        grid.CreateMap(Settings.MineCount);
     }
 
     private void SetCursorVisibility(bool visibility)
